@@ -1,0 +1,6 @@
+sops:
+  - name: ASN/DO of Problem Crossdock
+    file: asn_do.yaml
+
+  - name: State Change Problem
+    file: cambio_estado.yaml

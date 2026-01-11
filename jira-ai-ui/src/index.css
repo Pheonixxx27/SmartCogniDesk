@@ -1,0 +1,21 @@
+:root {
+  --bg: #0f172a;          /* dark slate */
+  --panel: #111827;       /* panel background */
+  --card: #1f2933;        /* cards */
+  --text: #e5e7eb;        /* main text */
+  --muted: #9ca3af;       /* secondary text */
+  --primary: #3b82f6;     /* blue */
+  --danger: #ef4444;      /* red */
+  --success: #22c55e;     /* green */
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+}

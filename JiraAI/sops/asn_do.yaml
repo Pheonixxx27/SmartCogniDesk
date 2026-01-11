@@ -1,0 +1,11 @@
+name: ASN / DO de Crossdock con Problemas
+
+match:
+  tier2_contains:
+    - "asn / do de crossdock con problemas"
+
+steps:
+  - find_ids
+  - get_foorch
+  - validate_movep
+  - analyze_movep_crossdock

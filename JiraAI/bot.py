@@ -1,259 +1,141 @@
-import os
-import json
-import requests
-import urllib3
+# JiraAI/bot.py
+
+from collections import defaultdict
 from pathlib import Path
-from jira import JIRA
-from dotenv import load_dotenv
-import ollama
+import yaml
+
+from JiraAI.engine.util import normalize
+from JiraAI.engine.engine import run
+from JiraAI.engine.context import ExecutionContext
+from JiraAI.engine.jira_scanner import scan_queue
+from JiraAI.sops.steps.planner import plan_sop
 
 # =====================================================
-# GLOBAL SETUP
+# GLOBAL STATS
 # =====================================================
 
-urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
-
-session = requests.Session()
-session.verify = False
+SOP_STATS = defaultdict(int)
 
 # =====================================================
-# 1. ENV & AUTH
+# PATHS
 # =====================================================
 
-env_path = Path(__file__).resolve().parent.parent / ".env"
-load_dotenv(dotenv_path=env_path)
-
-JIRA_URL = os.getenv("JIRA_URL")
-JIRA_TOKEN = os.getenv("JIRA_TOKEN")
-
-if not JIRA_URL or not JIRA_TOKEN:
-    raise RuntimeError("❌ Jira credentials missing")
-
-jira = JIRA(
-    server=JIRA_URL,
-    options={
-        "verify": True,
-        "headers": {
-            "Authorization": f"Basic {JIRA_TOKEN}",
-            "Content-Type": "application/json",
-        },
-    },
-)
-
-print("✅ Jira connection initialized successfully")
+BASE_DIR = Path(__file__).resolve().parent
+SOP_DIR = BASE_DIR / "sops"
 
 # =====================================================
-# 2. FIELD IDS (VERIFIED)
+# LOAD SOP DEFINITIONS
 # =====================================================
 
-TIER_1_ID = "customfield_34302"
-TIER_2_ID = "customfield_34303"
-TIER_3_ID = "customfield_34304"
-DATA_DETAIL_ID = "customfield_19765"
+def load_sops():
+    registry_path = SOP_DIR / "registry.yaml"
+
+    if not registry_path.exists():
+        raise FileNotFoundError(f"❌ SOP registry not found: {registry_path}")
+
+    with open(registry_path, "r") as f:
+        reg = yaml.safe_load(f)
+
+    if not reg or "sops" not in reg:
+        raise ValueError("❌ Invalid registry.yaml (missing 'sops')")
+
+    sops = {}
+
+    for entry in reg["sops"]:
+        sop_file = SOP_DIR / entry["file"]
+
+        if not sop_file.exists():
+            raise FileNotFoundError(f"❌ SOP file not found: {sop_file}")
+
+        with open(sop_file, "r") as sf:
+            sop_data = yaml.safe_load(sf)
+
+        sops[sop_data["name"]] = sop_data
+
+    print(f"✅ Loaded SOPs: {list(sops.keys())}")
+    return sops
+
+
+SOPS = load_sops()
 
 # =====================================================
-# 3. HELPERS
+# TICKET HANDLER
 # =====================================================
 
-def normalize(text: str) -> str:
-    return text.split("(")[0].strip().lower() if text else ""
-
-def get_select_value(ticket, field_id):
-    fields = ticket.raw.get("fields", {})
-    val = fields.get(field_id)
-
-    if not val:
-        return ""
-
-    # Multi-select or single-select wrapped as list
-    if isinstance(val, list) and val:
-        first = val[0]
-        if isinstance(first, dict):
-            return first.get("value") or first.get("name") or ""
-        if isinstance(first, str):
-            return first
-
-    # Single select as dict
-    if isinstance(val, dict):
-        return val.get("value") or val.get("name") or ""
-
-    # Sometimes Jira sends plain string
-    if isinstance(val, str):
-        return val
-
-    return ""
-
-
-def get_text(ticket, field_id):
-    return str(ticket.raw.get("fields", {}).get(field_id) or "")
-
-
-# =====================================================
-# 4. LLM EXTRACTION (SINGLE SOURCE OF TRUTH)
-# =====================================================
-
-def extract_ids_with_llm(text: str):
+def handle_ticket(ticket, jira_session):
     """
-    Extract Order IDs / LPNs using Ollama.
-    NO REGEX. NO GUESSING.
+    One Jira ticket → one ExecutionContext → one SOP execution
     """
-    if not text.strip():
-        return []
+    tier2 = normalize(ticket.tier2_text or "")
+    sop_name = plan_sop(tier2, SOPS)
 
-    prompt = f"""
-Extract ALL Order IDs or LPN numbers from the text below.
-
-Rules:
-- IDs are numeric
-- Return ONLY a JSON array of strings
-- Do not explain anything
-
-Text:
-{text}
-"""
-
-    try:
-        response = ollama.chat(
-            model="llama3:8b",
-            messages=[{"role": "user", "content": prompt}],
-        )
-
-        content = response["message"]["content"].strip()
-        return json.loads(content)
-
-    except Exception as e:
-        print(f"⚠️ LLM extraction failed: {e}")
-        return []
-
-
-# =====================================================
-# 5. ATTACHMENT HANDLING (OCR READY)
-# =====================================================
-
-def extract_text_from_attachments(ticket):
-    """
-    Placeholder for future OCR / PDF parsing.
-    Currently downloads attachment names only.
-    """
-    attachments = ticket.raw.get("fields", {}).get("attachment", [])
-    if not attachments:
-        return ""
-
-    collected_text = ""
-
-    for att in attachments:
-        filename = att.get("filename", "")
-        mime = att.get("mimeType", "")
-        content_url = att.get("content")
-
-        print(f"📎 Found attachment: {filename} ({mime})")
-
-        # 🔴 FUTURE:
-        # - Download file
-        # - If image → OCR
-        # - If PDF → text extraction
-        # For now, we just log presence
-
-        collected_text += f"\nAttachment: {filename}\n"
-
-    return collected_text
-
-
-# =====================================================
-# 6. MOVEP / CROSSDOCK SOP
-# =====================================================
-
-def solve_crossdock_logic(ticket):
-    issue_key = ticket.key
-    print(f"🚀 MOVEP SOP → {issue_key}")
-
-    description = getattr(ticket.fields, "description", "") or ""
-    detail = get_text(ticket, DATA_DETAIL_ID)
-
-    # STEP 1️⃣ — Description / fields
-    ids = extract_ids_with_llm(f"{detail}\n{description}")
-
-    # STEP 2️⃣ — Attachments fallback
-    if not ids:
-        print("ℹ️ No IDs in description, checking attachments...")
-        attachment_text = extract_text_from_attachments(ticket)
-        ids = extract_ids_with_llm(attachment_text)
-
-    if not ids:
-        print(f"⚠️ No IDs found for {issue_key}")
+    if not sop_name:
+        SOP_STATS["NO_MATCH"] += 1
+        print(f"❌ No SOP matched → {ticket.key}")
         return
 
-    for order_id in ids:
-        orch_url = (
-            "https://localhost:8082/"
-            "fulfilment-order-orchestrator/api/v1/"
-            f"fulfilment-logistic-orchestrator/{order_id}"
-        )
+    print(f"✅ SOP matched → {sop_name} | Ticket: {ticket.key}")
+    SOP_STATS[sop_name] += 1
 
-        headers = {
-            "x-commerce": "FALABELLA",
-            "x-country": "CL",
+    # --------------------------------------------------
+    # Execution Context (AUTHORITATIVE STATE)
+    # --------------------------------------------------
+    ctx = ExecutionContext(
+        issue_key=ticket.key,
+        description=ticket.description or "",
+        detail=ticket.detail or "",
+        attachments=ticket.attachments or [],
+        jira_session=jira_session,
+
+        # Shared lifecycle state
+        comments=[],
+        intent=None,
+        intent_confidence=None,
+        intent_reason=None,
+    )
+    ctx["ticket"] = ticket.key  # raw ticket object
+
+    # --------------------------------------------------
+    # Emit SOP_SELECTED (NOW ctx exists ✅)
+    # --------------------------------------------------
+    ctx.emit_event(
+        "SOP_SELECTED",
+        {
+            "sop": sop_name,
         }
+    )
 
-        try:
-            resp = session.get(orch_url, headers=headers, timeout=10)
-
-            if resp.status_code == 200:
-                print(f"✅ Order {order_id} found → analyzing states")
-            else:
-                print(f"❌ Order {order_id} not found (HTTP {resp.status_code})")
-
-        except Exception as e:
-            print(f"⚠️ Orchestrator error for {order_id}: {e}")
+    # --------------------------------------------------
+    # Run SOP
+    # --------------------------------------------------
+    run(ctx, SOPS[sop_name])
 
 
 # =====================================================
-# 7. QUEUE SCANNER
+# MAIN
 # =====================================================
 
-def scan_queue_and_solve():
-    print("🔍 Fetching LOOR - Forward - Backlog Queue...")
+def main():
+    print("🔍 Fetching Jira queue...")
 
-    jql = """
-        project = LOGFTC
-        AND status NOT IN (CANCELED, REJECTED, CLOSED, COMPLETED, RESOLVED)
-        AND "Resolution Group" = "ITSM - LOOR-FOO"
-    """
-
-    fields = [
-        "summary",
-        "description",
-        TIER_1_ID,
-        TIER_2_ID,
-        TIER_3_ID,
-        DATA_DETAIL_ID,
-        "attachment",
-    ]
-
-    tickets = jira.search_issues(jql, fields=fields, maxResults=100)
-    print(f"📋 Found {len(tickets)} active tickets.")
+    tickets, jira_session = scan_queue()  # UPDATED CONTRACT
 
     for ticket in tickets:
-        tier2 = normalize(get_select_value(ticket, TIER_2_ID))
+        handle_ticket(ticket, jira_session)
 
-        print(
-            f"{ticket.key} | "
-            f"Tier2 = {get_select_value(ticket, TIER_2_ID)}"
-        )
+    # --------------------------------------------------
+    # SUMMARY
+    # --------------------------------------------------
+    print("\n🧠 AI Planner Summary")
+    print("=" * 30)
 
-        if any(x in tier2 for x in ["asn", "do", "crossdock"]):
-            solve_crossdock_logic(ticket)
-
-        elif "cambio de estado" in tier2:
-            print(f"⚡ SOP MATCH → Cambio de Estado")
-
+    for sop, count in SOP_STATS.items():
+        if sop == "NO_MATCH":
+            print(f"❌ No SOP matched → {count} tickets")
         else:
-            print(f"⏭️ Skipping → {ticket.key}")
+            print(f"✅ {sop} → {count} tickets")
 
-
-# =====================================================
-# 8. MAIN
-# =====================================================
 
 if __name__ == "__main__":
-    scan_queue_and_solve()
+    print("🚀 Starting Jira AI SOP Engine")
+    main()

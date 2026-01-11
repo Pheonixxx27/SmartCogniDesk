@@ -1,0 +1,19 @@
+name: Problema Cambio de Estado
+
+match:
+  tier2_contains:
+    - problema cambio de estado
+
+steps:
+  - find_ids
+  - detect_status_intent
+  - handle_unknown_intent
+  - dispatch_ids  
+  - resolve_source_order
+  - get_foorch
+  - check_piddp
+  - analyze_movep_estado
+  - analyze_lmp
+  - analyze_reccp
+  - finalize_comment
+  - finalize_comment

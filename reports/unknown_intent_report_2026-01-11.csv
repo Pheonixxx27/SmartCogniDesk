@@ -1,0 +1,85 @@
+timestamp,ticket,tier2,intent_reason,description,detail
+2026-01-11T15:41:54.663576,LOGFTC-37823,,"Review / investigation request, not an action","Buen día team, favor su apoyo con la revisión de la siguiente orden *3218380853,* la cual enviaron el evento FULFILMENT_ORDER_PACKAGES_ANNULLED con ""multiPart"":
+
+string""true"" y deberia ser “false”. ",
+2026-01-11T15:41:54.670592,LOGFTC-37823,,"Review / investigation request, not an action","Buen día team, favor su apoyo con la revisión de la siguiente orden *3218380853,* la cual enviaron el evento FULFILMENT_ORDER_PACKAGES_ANNULLED con ""multiPart"":
+
+string""true"" y deberia ser “false”. ",
+2026-01-11T15:41:56.861814,LOGFTC-37813,,No explicit request to change state and the issue seems to be related to an incorrect event,"Error en sincronización de estado, ordenes no son canceladas en 360 en proceso habitual",
+2026-01-11T15:41:56.864851,LOGFTC-37813,,No explicit request to change state and the issue seems to be related to an incorrect event,"Error en sincronización de estado, ordenes no son canceladas en 360 en proceso habitual",
+2026-01-11T15:42:02.715831,LOGFTC-37785,,"Request for investigation/review, no explicit state change requested","Buen día team, favor su apoyo revisando las siguientes ordenes: 3220184630, 3220184250, 3220184807 las cuales no logramos ver en el header el atributo: ""x-site-id"": ""[marketplace.falabella.com|http://marketplace.falabella.com]"" en el evento FO_ITEMS_ANNULLED.
+
+Favor su apoyo revisando la casuística para estos casos particulares",
+2026-01-11T15:42:02.717261,LOGFTC-37785,,"Request for investigation/review, no explicit state change requested","Buen día team, favor su apoyo revisando las siguientes ordenes: 3220184630, 3220184250, 3220184807 las cuales no logramos ver en el header el atributo: ""x-site-id"": ""[marketplace.falabella.com|http://marketplace.falabella.com]"" en el evento FO_ITEMS_ANNULLED.
+
+Favor su apoyo revisando la casuística para estos casos particulares",
+2026-01-11T15:42:42.225638,LOGFTC-37680,,"Review / investigation request, not an action","_Equipo, solicitamos su apoyo reenviando los eventos_ {{FULFILMENT_ORDER_ITEM_QUANTITY_DISPATCHED}} _y posteriormente_ {{ORDER_360_NEW_PROMISE_DATE_EVENT}} _a Masso, para que la nueva promesa de entrega se refleje en el portal. Las órdenes involucradas son_:
+3P
+
+3220194378
+3219424865
+3218324327
+3219893534
+3220332335
+3219572839
+3219999982
+3220277977
+3220021690
+
+","3220194378
+3219424865
+3218324327
+3219893534
+3220332335
+3219572839
+3219999982
+3220277977
+3220021690"
+2026-01-11T15:42:42.235257,LOGFTC-37680,,"Review / investigation request, not an action","_Equipo, solicitamos su apoyo reenviando los eventos_ {{FULFILMENT_ORDER_ITEM_QUANTITY_DISPATCHED}} _y posteriormente_ {{ORDER_360_NEW_PROMISE_DATE_EVENT}} _a Masso, para que la nueva promesa de entrega se refleje en el portal. Las órdenes involucradas son_:
+3P
+
+3220194378
+3219424865
+3218324327
+3219893534
+3220332335
+3219572839
+3219999982
+3220277977
+3220021690
+
+","3220194378
+3219424865
+3218324327
+3219893534
+3220332335
+3219572839
+3219999982
+3220277977
+3220021690"
+2026-01-11T15:42:45.826961,LOGFTC-36941,,LLM failure,"Buenos días,
+
+Por favor su apoyo con el cambio de estado de las siguientes 5 ordenes que figuran como anulado en backstore y con “Anulado/NCRD” en SRX, pero en FO aun no migra el estado a “CANCELLED”, se visualiza aun en active
+
+3210728357
+
+ 3210730909 
+
+3211478042 
+
+3211695387 
+
+3215356164",
+2026-01-11T15:42:45.829616,LOGFTC-36941,,LLM failure,"Buenos días,
+
+Por favor su apoyo con el cambio de estado de las siguientes 5 ordenes que figuran como anulado en backstore y con “Anulado/NCRD” en SRX, pero en FO aun no migra el estado a “CANCELLED”, se visualiza aun en active
+
+3210728357
+
+ 3210730909 
+
+3211478042 
+
+3211695387 
+
+3215356164",
