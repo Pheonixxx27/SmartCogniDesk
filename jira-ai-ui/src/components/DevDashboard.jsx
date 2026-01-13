@@ -1,9 +1,17 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 export default function DevDashboard() {
   const [ticket, setTicket] = useState("");
   const [data, setData] = useState(null);
   const [loading, setLoading] = useState(false);
+
+  const [asnReports, setAsnReports] = useState([]);
+
+  useEffect(() => {
+    fetch("http://localhost:8000/dev/reports/asn-do")
+      .then((r) => r.json())
+      .then(setAsnReports);
+  }, []);
 
   const fetchTicket = () => {
     if (!ticket) return;
@@ -25,26 +33,43 @@ export default function DevDashboard() {
       <section style={section}>
         <h2>📥 Reports</h2>
 
-        <div style={buttonRow}>
+        <div style={row}>
           <a href="http://localhost:8000/dev/reports/business">
-            <button style={btnSecondary}>⬇️ Business Report</button>
+            <button style={btnSecondary}>Business</button>
           </a>
-
           <a href="http://localhost:8000/dev/reports/unknown">
-            <button style={btnDanger}>⚠️ Unknown Intent</button>
+            <button style={btnDanger}>Unknown</button>
           </a>
-
           <a href="http://localhost:8000/dev/reports/daily">
-            <button style={btnSecondary}>📄 Daily Failures</button>
+            <button style={btnSecondary}>Daily</button>
           </a>
         </div>
+      </section>
+
+      {/* ASN / DO REPORTS */}
+      <section style={section}>
+        <h2>🚚 ASN / DO Failed Executions</h2>
+
+        {asnReports.length === 0 && (
+          <p style={{ opacity: 0.6 }}>No ASN / DO failures detected 🎉</p>
+        )}
+
+        {asnReports.map((r) => (
+          <div key={r.file} style={card}>
+            <strong>{r.ticket}</strong>
+            <p>{r.file}</p>
+            <a href={`http://localhost:8000${r.download_url}`}>
+              ⬇️ Download Excel
+            </a>
+          </div>
+        ))}
       </section>
 
       {/* TICKET DEBUG */}
       <section style={section}>
         <h2>🔍 Ticket Debug</h2>
 
-        <div style={inputRow}>
+        <div style={row}>
           <input
             value={ticket}
             onChange={(e) => setTicket(e.target.value)}
@@ -56,18 +81,13 @@ export default function DevDashboard() {
           </button>
         </div>
 
-        {loading && <p style={{ opacity: 0.7 }}>Fetching ticket data…</p>}
+        {loading && <p>Fetching ticket data…</p>}
       </section>
 
-      {/* RAW JSON OUTPUT */}
       {data && (
-        <section style={section}>
-          <h2>🧾 Raw Execution Data</h2>
-
-          <pre style={jsonBox}>
-            {JSON.stringify(data, null, 2)}
-          </pre>
-        </section>
+        <pre style={jsonBox}>
+          {JSON.stringify(data, null, 2)}
+        </pre>
       )}
     </div>
   );
@@ -79,25 +99,14 @@ const container = {
   maxWidth: 1000,
   margin: "0 auto",
   padding: 24,
-  textAlign: "center",
 };
 
-const section = {
-  marginTop: 32,
-};
+const section = { marginTop: 32 };
 
-const buttonRow = {
+const row = {
   display: "flex",
-  justifyContent: "center",
   gap: 12,
   flexWrap: "wrap",
-  marginTop: 12,
-};
-
-const inputRow = {
-  display: "flex",
-  justifyContent: "center",
-  gap: 10,
   marginTop: 12,
 };
 
@@ -114,7 +123,6 @@ const btnPrimary = {
   border: "none",
   background: "#3b82f6",
   color: "white",
-  cursor: "pointer",
 };
 
 const btnSecondary = {
@@ -123,7 +131,6 @@ const btnSecondary = {
   border: "none",
   background: "#334155",
   color: "white",
-  cursor: "pointer",
 };
 
 const btnDanger = {
@@ -132,7 +139,13 @@ const btnDanger = {
   border: "none",
   background: "#ef4444",
   color: "white",
-  cursor: "pointer",
+};
+
+const card = {
+  background: "#020617",
+  padding: 16,
+  borderRadius: 12,
+  marginTop: 12,
 };
 
 const jsonBox = {
@@ -142,6 +155,5 @@ const jsonBox = {
   maxHeight: 450,
   overflow: "auto",
   fontSize: 13,
-  textAlign: "left",
   marginTop: 12,
 };

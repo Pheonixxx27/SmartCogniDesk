@@ -14,16 +14,20 @@ def execute(ctx):
 
     # 1️⃣ Locate RECCP
     reccp_id = None
+    reccp_op = None
     for group in operations:
         for op in group.get("operationsInfo", []):
             if op.get("operationCode") == "RECCP":
                 reccp_id = op.get("operationId")
+                reccp_op = op
                 break
         if reccp_id:
             break
+        if not reccp_op or reccp_op.get("operationCreated") != "SUCCESS":
+          return ctx
 
-    if not reccp_id:
-        return ctx
+        if not reccp_id:
+         return ctx
 
     # 2️⃣ Fetch RECCP
     url = f"https://localhost:8082/receive-and-collect/api/v1/receive-and-collect/{reccp_id}"

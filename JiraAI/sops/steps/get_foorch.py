@@ -18,49 +18,35 @@ def execute(ctx):
 
     resp = requests.get(url, headers=headers, timeout=10, verify=False)
 
-    # --------------------------------------------------
-    # 1️⃣ FOORCH not found → HARD STOP (no business comment)
-    # --------------------------------------------------
+    # 1️⃣ Not found → hard stop
     if resp.status_code != 200:
         ctx.log(f"❌ FO {fo_id} not present in FOORCH")
         ctx.stop()
         return ctx
 
     ctx["foorch"] = resp.json()
-
     order_status = ctx["foorch"].get("orderStatus")
+    ctx["operations"] = ctx["foorch"].get("operationGroups", [])
 
-    # --------------------------------------------------
-    # 2️⃣ TERMINAL STATE → BUSINESS BLOCKER (NO STOP)
-    # --------------------------------------------------
+    # 2️⃣ Terminal → blocker but NOT stop
     if order_status in ("CANCELLED", "COMPLETED", "COMPLETED_EXCEPTIONS"):
         ctx.log(f"ℹ️ FOORCH in terminal state → {order_status}")
-
         ctx["blocker"] = {
             "type": "FOORCH_TERMINAL",
-            "country": country,
             "details": {
-                "status": order_status,
                 "fo_id": fo_id,
+                "status": order_status,
+                "country": country,
             },
         }
-        return ctx  # ✅ allow finalize_comment
+        return ctx
 
-    # --------------------------------------------------
-    # 3️⃣ Missing operations → EXECUTION FAILURE
-    # --------------------------------------------------
-    operation_groups = ctx["foorch"].get("operationGroups")
-
-    if not operation_groups:
-        ctx.log("❌ FOORCH operations data is missing")
+    # 3️⃣ Missing operations → execution failure
+    if not ctx["foorch"].get("operationGroups"):
+        ctx.log("❌ FOORCH operations missing")
         ctx.stop()
         return ctx
 
-    # --------------------------------------------------
-    # 4️⃣ NORMAL FLOW
-    # --------------------------------------------------
-    ctx["operations"] = operation_groups
     ctx["country"] = country
-
     ctx.log(f"✅ FOORCH retrieved successfully for country {country}")
     return ctx

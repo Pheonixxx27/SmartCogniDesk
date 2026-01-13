@@ -6,6 +6,13 @@ match:
 
 steps:
   - find_ids
+  - dispatch_ids
+  - resolve_source_order
   - get_foorch
+  - check_piddp
   - validate_movep
   - analyze_movep_crossdock
+  - trigger_contingency_asn_do
+  - analyze_movep_crossdock
+  - generate_asn_do_excel
+  - finalize_comment

@@ -6,7 +6,9 @@ from pathlib import Path
 from datetime import date
 
 router = APIRouter()
+
 REPORT_DIR = Path("reports")
+ASN_DO_DIR = REPORT_DIR / "asn_do"
 
 
 def clean(doc):
@@ -42,6 +44,28 @@ def download_unknown_report():
 def download_daily_report():
     path = REPORT_DIR / f"daily_report_{date.today().isoformat()}.csv"
     return FileResponse(path, filename=path.name)
+
+
+# --------------------------------------------------
+# ✅ NEW: ASN / DO FAILED REPORT LIST (DEV ONLY)
+# --------------------------------------------------
+@router.get("/reports/asn-do")
+def list_asn_do_reports():
+    if not ASN_DO_DIR.exists():
+        return []
+
+    reports = []
+
+    for f in ASN_DO_DIR.glob("*.xlsx"):
+        ticket = f.name.split("_")[0]
+        reports.append({
+            "ticket": ticket,
+            "file": f.name,
+            "download_url": f"/reports/asn_do/{f.name}",
+        })
+
+    return reports
+
 
 @router.get("/ticket/{ticket}/final-comment")
 def get_final_comment(ticket: str):

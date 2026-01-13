@@ -24,6 +24,9 @@ def execute(ctx):
 
     if not lmp_op:
         return ctx
+    
+    if not lmp_op or lmp_op.get("operationCreated") != "SUCCESS":
+        return ctx
 
     lmp_id = lmp_op.get("operationId")
     if not lmp_id:

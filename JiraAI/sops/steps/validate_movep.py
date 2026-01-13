@@ -7,6 +7,13 @@ def execute(ctx):
                 ctx["movep"] = op
                 return ctx
 
-    ctx.log("ℹ️ No MOVEP operation")
-    ctx.stop()
+    # MOVEP missing → business-visible blocker
+    ctx.log("ℹ️ MOVEP operation not present")
+
+    ctx["blocker"] = {
+        "type": "MOVEP_NOT_PRESENT",
+        "details": {
+            "fo_id": ctx.get("fo_id"),
+        },
+    }
     return ctx

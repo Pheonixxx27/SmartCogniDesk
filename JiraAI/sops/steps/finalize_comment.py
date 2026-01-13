@@ -1,8 +1,10 @@
+import json
+
 def execute(ctx):
     ctx.log("🧾 STEP: FINALIZE_COMMENT (child)")
 
     # --------------------------------------------------
-    # SAFETY 0️⃣: issue_key MUST exist (CRITICAL)
+    # SAFETY 0️⃣: issue_key MUST exist
     # --------------------------------------------------
     issue_key = ctx.get("issue_key")
     if not issue_key:
@@ -30,14 +32,14 @@ def execute(ctx):
     d = blocker.get("details", {})
 
     # --------------------------------------------------
-    # 🔕 INFO-ONLY BLOCKERS → SILENT EXIT (DO NOT EMIT)
+    # 🔕 INFO-ONLY BLOCKERS → SILENT EXIT
     # --------------------------------------------------
     if t in ("LMP_INFO", "RECCP_INFO"):
         ctx.log(f"ℹ️ Informational blocker {t} → no executor comment")
         ctx["executor_comments"] = []
         return ctx
 
-    executor_map = {}  # executor → list[str]
+    executor_map = {}
 
     def add(executor, line):
         executor_map.setdefault(executor, []).append(line)
@@ -127,6 +129,28 @@ def execute(ctx):
                 f"and belongs to {executor}."
             )
 
+    # ================= PIDDP AWAITING SHIPMENT =================
+    elif t == "PIDDP_AWAITING_SHIPMENT_CONFIRMATION":
+        executor = d.get("executor", "UNKNOWN")
+        fo_id = d.get("fo_id")
+        piddp_id = d.get("piddp_id")
+
+        if not ctx.get("asn_do_excel"):
+            ctx["asn_do_excel"] = {
+                "file": "N/A",
+                "reason": "Awaiting shipment confirmation",
+            }
+
+        add(executor, f"Shipment confirmation pending for FO {fo_id}.")
+        add(
+            executor,
+            f"PIDDP {piddp_id} is active and has not yet received shipment confirmation."
+        )
+        add(
+            executor,
+            "Please confirm shipment to allow ASN / DO crossdock processing."
+        )
+
     # ================= FOORCH TERMINAL =================
     elif t == "FOORCH_TERMINAL":
         add(
@@ -136,6 +160,53 @@ def execute(ctx):
         )
         add("INFO", "No operational action required.")
 
+    # ================= ASN / DO CROSSDOCK =================
+    elif t == "ASN_DO_FAILED":
+        fo_id = d.get("fo_id")
+        failure_count = d.get("failure_count", 0)
+        excel = ctx.get("asn_do_excel")
+        movep = ctx.get("movep", {})
+
+        executors = set()
+
+        try:
+            payload = movep.get("payload")
+            if isinstance(payload, str):
+                payload = json.loads(payload)
+
+            nodes = (
+                payload
+                .get("reservationDetails", {})
+                .get("transferNodes", [])
+            )
+
+            for node in nodes:
+                executor = node.get("executorRef")
+                if executor:
+                    executors.add(executor)
+
+        except Exception:
+            pass
+
+        if not executors:
+            executors.add("UNKNOWN")
+
+        for executor in executors:
+            add(
+                executor,
+                f"ASN / DO Crossdock flow failed for FO {fo_id}."
+            )
+            add(
+                executor,
+                f"{failure_count} blocking task(s) detected during crossdock validation."
+            )
+
+            if excel:
+                add(
+                    executor,
+                    f"Detailed failure report generated in Excel file: {excel.get('file')}."
+                )
+
     # ================= SAFETY NET =================
     else:
         add(
@@ -144,7 +215,7 @@ def execute(ctx):
         )
 
     # --------------------------------------------------
-    # EMIT EVENTS — ONE PER EXECUTOR (CORRECT & SAFE)
+    # EMIT EVENTS
     # --------------------------------------------------
     all_comments = []
 
@@ -153,7 +224,6 @@ def execute(ctx):
         for l in lines:
             all_comments.append(f" - {l}")
 
-        # 🔑 ticket is injected by emit_event via issue_key
         ctx.emit_event(
             "EXECUTOR_COMMENT",
             {
@@ -166,5 +236,12 @@ def execute(ctx):
 
     ctx["executor_comments"] = all_comments
     ctx.log(f"🧩 Child executor comments → {all_comments}")
+
+    # --------------------------------------------------
+    # ✅ NEW: STOP SOP *AFTER* COMMENTS IF REQUIRED
+    # --------------------------------------------------
+    if ctx.get("stop_after_finalize"):
+        ctx.log("⛔ SOP stopped after finalize_comment")
+        ctx.stop()
 
     return ctx
