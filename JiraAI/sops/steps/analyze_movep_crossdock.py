@@ -86,8 +86,16 @@ def execute(ctx):
     failures = analyze(movep)
 
     if not failures:
-        ctx.log("✅ MOVEP healthy on first check")
-        return ctx
+        ctx.log("✅ MOVEP healthy — all ASN / DO tasks completed")
+
+        ctx["blocker"] = {
+            "type": "ASN_DO_INFO",
+            "details": {
+                "fo_id": ctx.get("fo_id"),
+                "message": "All ASN / DO reception and dispatch tasks are already completed.",
+                "movep_id": movep_id,
+            },
+        }
 
     if failures:
         ctx.log(f"❌ MOVEP still failing → {len(failures)} issues")

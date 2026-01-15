@@ -207,6 +207,18 @@ def execute(ctx):
                     f"Detailed failure report generated in Excel file: {excel.get('file')}."
                 )
 
+    elif t == "ASN_DO_INFO":
+        movep_id = d.get("movep_id")
+        add(
+            "INFO",
+            f"All ASN / DO reception and dispatch tasks are already completed for movement operation {movep_id}."
+        )
+        add(
+            "INFO",
+            "No operational action required."
+        )
+
+
     # ================= SAFETY NET =================
     else:
         add(

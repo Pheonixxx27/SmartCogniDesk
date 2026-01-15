@@ -93,7 +93,8 @@ def handle_ticket(ticket, jira_session):
         intent_confidence=None,
         intent_reason=None,
     )
-    ctx["ticket"] = ticket.key  # raw ticket object
+    ctx["ticket"] = ticket.key
+    ctx["jira"] = jira_session    # raw ticket object
 
     # --------------------------------------------------
     # Emit SOP_SELECTED (NOW ctx exists ✅)
@@ -137,5 +138,4 @@ def main():
 
 
 if __name__ == "__main__":
-    print("🚀 Starting Jira AI SOP Engine")
     main()

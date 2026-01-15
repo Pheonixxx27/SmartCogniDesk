@@ -1,0 +1,164 @@
+timestamp,ticket,sop,blocked_by,country,final_comment
+2026-01-14T08:26:04.423993,LOGFTC-38158,ASN / DO de Crossdock con Problemas,,CL,"Executor INFO:
+ - All ASN / DO reception and dispatch tasks are already completed for movement operation MOVEP000022149713.
+ - No operational action required."
+2026-01-14T08:26:04.474402,LOGFTC-38158,ASN / DO de Crossdock con Problemas,,CL,"Executor INFO:
+ - All ASN / DO reception and dispatch tasks are already completed for movement operation MOVEP000021868630.
+ - No operational action required."
+2026-01-14T08:26:11.152358,LOGFTC-38158,ASN / DO de Crossdock con Problemas,,CL,"Executor INFO:
+ - All ASN / DO reception and dispatch tasks are already completed for movement operation MOVEP000022149713.
+ - No operational action required."
+2026-01-14T08:26:17.706030,LOGFTC-38157,ASN / DO de Crossdock con Problemas,,CL,"Executor INFO:
+ - All ASN / DO reception and dispatch tasks are already completed for movement operation MOVEP000022227948.
+ - No operational action required."
+2026-01-14T08:26:24.362418,LOGFTC-38157,ASN / DO de Crossdock con Problemas,,CL,"Executor INFO:
+ - All ASN / DO reception and dispatch tasks are already completed for movement operation MOVEP000022227948.
+ - No operational action required."
+2026-01-14T08:26:39.024240,LOGFTC-38125,Problema Cambio de Estado,,CO,"Executor THREE_PL:
+ - LMP - LMP00000004417178 | packageTrackingRef 486c5481-52f6-413b-a34d-bbad273db040 in state ACKNOWLEDGED belongs to THREE_PL"
+2026-01-14T08:26:39.748385,LOGFTC-38125,Problema Cambio de Estado,,CO,"Executor BACKSTORE:
+ - RECCP - RECCP000000444809 | None pending for packageTrackingRef 354f4507-8bd5-493e-a939-d4fed5d08049 (state: None) belongs to BACKSTORE
+ - RECCP - RECCP000000444809 | None pending for packageTrackingRef 55045016-4a0f-4b01-bf6e-cccb28f13f52 (state: None) belongs to BACKSTORE
+ - RECCP - RECCP000000444809 | None pending for packageTrackingRef 354f4507-8bd5-493e-a939-d4fed5d08049 (state: None) belongs to BACKSTORE
+ - RECCP - RECCP000000444809 | None pending for packageTrackingRef 354f4507-8bd5-493e-a939-d4fed5d08049 (state: None) belongs to BACKSTORE"
+2026-01-14T08:26:39.976944,LOGFTC-38125,Problema Cambio de Estado,,CO,"Executor THREE_PL:
+ - LMP - LMP00000004394042 | packageTrackingRef d538f44d-1f1f-475b-b45a-3315c91bfeac in state ACKNOWLEDGED belongs to THREE_PL"
+2026-01-14T08:26:40.900111,LOGFTC-38125,Problema Cambio de Estado,,CO,"Executor BACKSTORE:
+ - RECCP - RECCP000000443148 | None pending for packageTrackingRef 2f20e065-c6c1-4fec-a25b-b5c48754bad4 (state: None) belongs to BACKSTORE
+ - RECCP - RECCP000000443148 | None pending for packageTrackingRef 708dc3b7-e1e6-4fdb-83a6-849e886c910e (state: None) belongs to BACKSTORE
+ - RECCP - RECCP000000443148 | None pending for packageTrackingRef 2f20e065-c6c1-4fec-a25b-b5c48754bad4 (state: None) belongs to BACKSTORE
+ - RECCP - RECCP000000443148 | None pending for packageTrackingRef 2f20e065-c6c1-4fec-a25b-b5c48754bad4 (state: None) belongs to BACKSTORE"
+2026-01-14T08:26:45.390496,LOGFTC-38125,Problema Cambio de Estado,,CO,"Executor BACKSTORE:
+ - RECCP - RECCP000000449397 | None pending for packageTrackingRef 366c9efd-58c9-42d8-b7cb-7afa5f5f0730 (state: None) belongs to BACKSTORE
+ - RECCP - RECCP000000449397 | None pending for packageTrackingRef 3f5453f6-2581-4795-9201-dcdbc1773814 (state: None) belongs to BACKSTORE
+ - RECCP - RECCP000000449397 | None pending for packageTrackingRef 366c9efd-58c9-42d8-b7cb-7afa5f5f0730 (state: None) belongs to BACKSTORE
+ - RECCP - RECCP000000449397 | None pending for packageTrackingRef 366c9efd-58c9-42d8-b7cb-7afa5f5f0730 (state: None) belongs to BACKSTORE
+ - RECCP - RECCP000000449397 | None pending for packageTrackingRef 0f62ff33-58c7-43c8-8c25-483e5cc0c740 (state: None) belongs to BACKSTORE
+ - RECCP - RECCP000000449397 | None pending for packageTrackingRef 7c0920ed-37a3-4a26-b48e-cc4c53946f48 (state: None) belongs to BACKSTORE"
+2026-01-14T08:26:45.660375,LOGFTC-38125,Problema Cambio de Estado,,CO,"Executor BACKSTORE:
+ - RECCP - RECCP000000444819 | None pending for packageTrackingRef 1b7c5fe5-aaaf-4015-914a-cb8ffd4b857f (state: None) belongs to BACKSTORE
+ - RECCP - RECCP000000444819 | None pending for packageTrackingRef c207d027-eaf4-4eb9-af28-14a4d9aea5c6 (state: None) belongs to BACKSTORE
+ - RECCP - RECCP000000444819 | None pending for packageTrackingRef 1b7c5fe5-aaaf-4015-914a-cb8ffd4b857f (state: None) belongs to BACKSTORE
+ - RECCP - RECCP000000444819 | None pending for packageTrackingRef 1b7c5fe5-aaaf-4015-914a-cb8ffd4b857f (state: None) belongs to BACKSTORE
+ - RECCP - RECCP000000444819 | None pending for packageTrackingRef 68c7f5a9-2e40-42fa-8227-156d4ab4f002 (state: None) belongs to BACKSTORE
+ - RECCP - RECCP000000444819 | None pending for packageTrackingRef 12a6b46c-9258-4a77-a4fa-3c8f2b5933a6 (state: None) belongs to BACKSTORE"
+2026-01-14T08:26:46.296148,LOGFTC-38125,Problema Cambio de Estado,,CO,"Executor BACKSTORE:
+ - RECCP - RECCP000000449611 | None pending for packageTrackingRef c4ad5071-a6be-47c7-b2ce-a2a69ec200ae (state: None) belongs to BACKSTORE
+ - RECCP - RECCP000000449611 | None pending for packageTrackingRef a880533c-109f-4d7c-aacd-bb34edfcb5a3 (state: None) belongs to BACKSTORE
+ - RECCP - RECCP000000449611 | None pending for packageTrackingRef c4ad5071-a6be-47c7-b2ce-a2a69ec200ae (state: None) belongs to BACKSTORE
+ - RECCP - RECCP000000449611 | None pending for packageTrackingRef c4ad5071-a6be-47c7-b2ce-a2a69ec200ae (state: None) belongs to BACKSTORE
+ - RECCP - RECCP000000449611 | None pending for packageTrackingRef 9c4a61d7-4938-487d-94fd-aeb8cde9fc6e (state: None) belongs to BACKSTORE
+ - RECCP - RECCP000000449611 | None pending for packageTrackingRef 63fbe75d-64cc-4689-8e1e-bb69ba63a5cf (state: None) belongs to BACKSTORE"
+2026-01-14T08:26:47.256573,LOGFTC-38125,Problema Cambio de Estado,,CO,"Executor BACKSTORE:
+ - RECCP - RECCP000000445309 | None pending for packageTrackingRef e41bef00-4198-48f0-9af7-8c8cf390fafa (state: None) belongs to BACKSTORE
+ - RECCP - RECCP000000445309 | None pending for packageTrackingRef 392dc0ce-21a5-467b-a2f7-6d07d7f4e49a (state: None) belongs to BACKSTORE
+ - RECCP - RECCP000000445309 | None pending for packageTrackingRef e41bef00-4198-48f0-9af7-8c8cf390fafa (state: None) belongs to BACKSTORE
+ - RECCP - RECCP000000445309 | None pending for packageTrackingRef e41bef00-4198-48f0-9af7-8c8cf390fafa (state: None) belongs to BACKSTORE"
+2026-01-14T08:26:47.393801,LOGFTC-38125,Problema Cambio de Estado,,CO,"Executor BACKSTORE:
+ - RECCP - RECCP000000450023 | None pending for packageTrackingRef 46caae8b-3229-4f08-ade1-322fc1bddf83 (state: None) belongs to BACKSTORE
+ - RECCP - RECCP000000450023 | None pending for packageTrackingRef 23984d5c-cf85-4d8f-a356-069ba635ab2c (state: None) belongs to BACKSTORE
+ - RECCP - RECCP000000450023 | None pending for packageTrackingRef 46caae8b-3229-4f08-ade1-322fc1bddf83 (state: None) belongs to BACKSTORE
+ - RECCP - RECCP000000450023 | None pending for packageTrackingRef 46caae8b-3229-4f08-ade1-322fc1bddf83 (state: None) belongs to BACKSTORE
+ - RECCP - RECCP000000450023 | None pending for packageTrackingRef a36458ec-13a7-45bc-b961-30896ca3a638 (state: None) belongs to BACKSTORE
+ - RECCP - RECCP000000450023 | None pending for packageTrackingRef 515fd7a7-8865-4cba-894e-d186d0e77d36 (state: None) belongs to BACKSTORE"
+2026-01-14T08:26:54.223728,LOGFTC-38125,Problema Cambio de Estado,,CO,"Executor BACKSTORE:
+ - RECCP - RECCP000000445940 | None pending for packageTrackingRef 088fc655-efd5-45ed-8444-de5133da930b (state: None) belongs to BACKSTORE
+ - RECCP - RECCP000000445940 | None pending for packageTrackingRef db4eeda2-3703-4338-bc00-e29fe540b1ff (state: None) belongs to BACKSTORE
+ - RECCP - RECCP000000445940 | None pending for packageTrackingRef db4eeda2-3703-4338-bc00-e29fe540b1ff (state: None) belongs to BACKSTORE
+ - RECCP - RECCP000000445940 | None pending for packageTrackingRef db4eeda2-3703-4338-bc00-e29fe540b1ff (state: None) belongs to BACKSTORE
+ - RECCP - RECCP000000445940 | None pending for packageTrackingRef 22a59431-8902-4da7-80fa-ef5cbcf85b24 (state: None) belongs to BACKSTORE
+ - RECCP - RECCP000000445940 | None pending for packageTrackingRef 1033998d-0adc-4162-82ba-690840a825d7 (state: None) belongs to BACKSTORE"
+2026-01-14T08:26:54.267463,LOGFTC-38125,Problema Cambio de Estado,,CO,"Executor THREE_PL:
+ - LMP - LMP00000004416012 | packageTrackingRef db115e49-da74-4472-adaa-3339f8a02e38 in state ACKNOWLEDGED belongs to THREE_PL"
+2026-01-14T08:26:54.273988,LOGFTC-38125,Problema Cambio de Estado,,CO,"Executor BACKSTORE:
+ - RECCP - RECCP000000451182 | None pending for packageTrackingRef af448ff1-011f-4e6a-a9be-eb7ad50eb9aa (state: None) belongs to BACKSTORE
+ - RECCP - RECCP000000451182 | None pending for packageTrackingRef caed5a3f-b485-4017-a874-91fa69453f80 (state: None) belongs to BACKSTORE
+ - RECCP - RECCP000000451182 | None pending for packageTrackingRef caed5a3f-b485-4017-a874-91fa69453f80 (state: None) belongs to BACKSTORE
+ - RECCP - RECCP000000451182 | None pending for packageTrackingRef caed5a3f-b485-4017-a874-91fa69453f80 (state: None) belongs to BACKSTORE
+ - RECCP - RECCP000000451182 | None pending for packageTrackingRef fdee6e95-31d1-4bdc-a90b-dca0cdefb321 (state: None) belongs to BACKSTORE
+ - RECCP - RECCP000000451182 | None pending for packageTrackingRef 15502107-ebc7-4f2d-90a2-ccc468b9e102 (state: None) belongs to BACKSTORE"
+2026-01-14T08:26:54.303583,LOGFTC-38125,Problema Cambio de Estado,,CO,"Executor BACKSTORE:
+ - RECCP - RECCP000000449329 | None pending for packageTrackingRef 1b05b4ac-8b5c-44c1-9cc2-f93a1b517a2f (state: None) belongs to BACKSTORE
+ - RECCP - RECCP000000449329 | None pending for packageTrackingRef 92449ca6-1602-4892-b55e-bcf5e6ed0338 (state: None) belongs to BACKSTORE
+ - RECCP - RECCP000000449329 | None pending for packageTrackingRef 92449ca6-1602-4892-b55e-bcf5e6ed0338 (state: None) belongs to BACKSTORE
+ - RECCP - RECCP000000449329 | None pending for packageTrackingRef 92449ca6-1602-4892-b55e-bcf5e6ed0338 (state: None) belongs to BACKSTORE
+ - RECCP - RECCP000000449329 | None pending for packageTrackingRef c26e7481-43b5-451b-b562-1d6cce82bcf6 (state: None) belongs to BACKSTORE
+ - RECCP - RECCP000000449329 | None pending for packageTrackingRef 3b4e4640-c812-440d-81c7-b9bc9b1c3e6d (state: None) belongs to BACKSTORE"
+2026-01-14T08:26:55.207877,LOGFTC-38125,Problema Cambio de Estado,,CO,"Executor BACKSTORE:
+ - RECCP - RECCP000000449541 | None pending for packageTrackingRef 7fcce3dd-0d3f-4b30-8711-007ff2330349 (state: None) belongs to BACKSTORE
+ - RECCP - RECCP000000449541 | None pending for packageTrackingRef c2acd13e-3667-4ae5-aa07-9c96f526d60a (state: None) belongs to BACKSTORE
+ - RECCP - RECCP000000449541 | None pending for packageTrackingRef 7fcce3dd-0d3f-4b30-8711-007ff2330349 (state: None) belongs to BACKSTORE
+ - RECCP - RECCP000000449541 | None pending for packageTrackingRef 7fcce3dd-0d3f-4b30-8711-007ff2330349 (state: None) belongs to BACKSTORE
+ - RECCP - RECCP000000449541 | None pending for packageTrackingRef 03d8e926-3249-4c9f-befa-98068f71d336 (state: None) belongs to BACKSTORE
+ - RECCP - RECCP000000449541 | None pending for packageTrackingRef de3249ef-23c4-4ea1-8788-679a327cd5d1 (state: None) belongs to BACKSTORE"
+2026-01-14T08:27:00.782728,LOGFTC-38125,Problema Cambio de Estado,,CO,"Executor BACKSTORE:
+ - RECCP - RECCP000000451168 | None pending for packageTrackingRef d62cb341-cfae-4f25-a59e-8e22ed9e4bdf (state: None) belongs to BACKSTORE
+ - RECCP - RECCP000000451168 | None pending for packageTrackingRef c7792ac5-96d9-4ead-8ecb-83266a153b9e (state: None) belongs to BACKSTORE
+ - RECCP - RECCP000000451168 | None pending for packageTrackingRef d62cb341-cfae-4f25-a59e-8e22ed9e4bdf (state: None) belongs to BACKSTORE
+ - RECCP - RECCP000000451168 | None pending for packageTrackingRef d62cb341-cfae-4f25-a59e-8e22ed9e4bdf (state: None) belongs to BACKSTORE
+ - RECCP - RECCP000000451168 | None pending for packageTrackingRef fd4c359d-5a7f-4e9a-a6a2-1fffb10f0889 (state: None) belongs to BACKSTORE
+ - RECCP - RECCP000000451168 | None pending for packageTrackingRef d5743cb3-8d39-4b13-bcb0-0474ca84b58a (state: None) belongs to BACKSTORE"
+2026-01-14T08:27:00.816182,LOGFTC-38125,Problema Cambio de Estado,,CO,"Executor THREE_PL:
+ - LMP - LMP00000004416144 | packageTrackingRef 5d89635c-aa8a-4050-90f2-fff649adda62 in state ACKNOWLEDGED belongs to THREE_PL"
+2026-01-14T08:27:00.893323,LOGFTC-38125,Problema Cambio de Estado,,CO,"Executor BACKSTORE:
+ - RECCP - RECCP000000451125 | None pending for packageTrackingRef 2c863808-9cda-42ff-a9ed-f3d674b0dc20 (state: None) belongs to BACKSTORE
+ - RECCP - RECCP000000451125 | None pending for packageTrackingRef d9617439-6071-4293-9ffb-ea6bdfc481fb (state: None) belongs to BACKSTORE
+ - RECCP - RECCP000000451125 | None pending for packageTrackingRef 2c863808-9cda-42ff-a9ed-f3d674b0dc20 (state: None) belongs to BACKSTORE
+ - RECCP - RECCP000000451125 | None pending for packageTrackingRef 2c863808-9cda-42ff-a9ed-f3d674b0dc20 (state: None) belongs to BACKSTORE
+ - RECCP - RECCP000000451125 | None pending for packageTrackingRef 911617de-b2f1-4367-9541-a8c2f29a8d4d (state: None) belongs to BACKSTORE
+ - RECCP - RECCP000000451125 | None pending for packageTrackingRef 2c8b2126-8810-449c-9d28-9dc449544d4a (state: None) belongs to BACKSTORE"
+2026-01-14T08:27:00.939850,LOGFTC-38125,Problema Cambio de Estado,,CO,"Executor BACKSTORE:
+ - RECCP - RECCP000000451256 | None pending for packageTrackingRef ba13c5c0-dd47-4c96-9265-4b2ec4e947a3 (state: None) belongs to BACKSTORE
+ - RECCP - RECCP000000451256 | None pending for packageTrackingRef 8f77c98e-fd15-41e7-a5e8-712eae4db02a (state: None) belongs to BACKSTORE
+ - RECCP - RECCP000000451256 | None pending for packageTrackingRef ba13c5c0-dd47-4c96-9265-4b2ec4e947a3 (state: None) belongs to BACKSTORE
+ - RECCP - RECCP000000451256 | None pending for packageTrackingRef ba13c5c0-dd47-4c96-9265-4b2ec4e947a3 (state: None) belongs to BACKSTORE
+ - RECCP - RECCP000000451256 | None pending for packageTrackingRef 6ee454e0-17f8-4fbc-8d5b-adef62dd0b32 (state: None) belongs to BACKSTORE
+ - RECCP - RECCP000000451256 | None pending for packageTrackingRef dc1fb465-d370-4c24-b605-2901f2da8841 (state: None) belongs to BACKSTORE"
+2026-01-14T08:27:01.590299,LOGFTC-38125,Problema Cambio de Estado,,CO,"Executor THREE_PL:
+ - LMP - LMP00000004381166 | packageTrackingRef d31b75bf-ed46-4024-81cf-0c78dff50d7b in state ACKNOWLEDGED belongs to THREE_PL"
+2026-01-14T08:27:08.557433,LOGFTC-38125,Problema Cambio de Estado,,CO,"Executor THREE_PL:
+ - LMP - LMP00000004449726 | packageTrackingRef da783c9a-779a-40a3-8f12-1ecc645b08fe in state ACKNOWLEDGED belongs to THREE_PL"
+2026-01-14T08:27:08.563034,LOGFTC-38125,Problema Cambio de Estado,,CO,"Executor BACKSTORE:
+ - RECCP - RECCP000000462866 | None pending for packageTrackingRef bf38ed36-de23-4a2d-a088-03c12f824711 (state: None) belongs to BACKSTORE
+ - RECCP - RECCP000000462866 | None pending for packageTrackingRef 1df03b0c-b17e-407f-a639-2b764a20bb46 (state: None) belongs to BACKSTORE
+ - RECCP - RECCP000000462866 | None pending for packageTrackingRef bf38ed36-de23-4a2d-a088-03c12f824711 (state: None) belongs to BACKSTORE
+ - RECCP - RECCP000000462866 | None pending for packageTrackingRef bf38ed36-de23-4a2d-a088-03c12f824711 (state: None) belongs to BACKSTORE
+ - RECCP - RECCP000000462866 | None pending for packageTrackingRef d1711cc2-f168-4e07-8d1d-7debce5e2c0e (state: None) belongs to BACKSTORE
+ - RECCP - RECCP000000462866 | None pending for packageTrackingRef f09b6946-7ed8-4ec4-b4f0-a205b921d53a (state: None) belongs to BACKSTORE"
+2026-01-14T08:27:08.567909,LOGFTC-38125,Problema Cambio de Estado,,CO,"Executor THREE_PL:
+ - LMP - LMP00000004449946 | packageTrackingRef 5eeff1f5-be01-48fb-8694-847acf47fbe5 in state ACKNOWLEDGED belongs to THREE_PL"
+2026-01-14T08:27:08.607470,LOGFTC-38125,Problema Cambio de Estado,,CO,"Executor THREE_PL:
+ - LMP - LMP00000004448184 | packageTrackingRef e1d360e0-7657-499c-a199-f2a8f6e8c09a in state ACKNOWLEDGED belongs to THREE_PL"
+2026-01-14T08:27:09.354833,LOGFTC-38125,Problema Cambio de Estado,,CO,"Executor BACKSTORE:
+ - RECCP - RECCP000000462950 | None pending for packageTrackingRef ce33e30e-94ef-43b3-aa9c-6ff4d0301b92 (state: None) belongs to BACKSTORE
+ - RECCP - RECCP000000462950 | None pending for packageTrackingRef 255ca8e9-7315-43fa-92f4-6310b6be99a6 (state: None) belongs to BACKSTORE
+ - RECCP - RECCP000000462950 | None pending for packageTrackingRef ce33e30e-94ef-43b3-aa9c-6ff4d0301b92 (state: None) belongs to BACKSTORE
+ - RECCP - RECCP000000462950 | None pending for packageTrackingRef ce33e30e-94ef-43b3-aa9c-6ff4d0301b92 (state: None) belongs to BACKSTORE
+ - RECCP - RECCP000000462950 | None pending for packageTrackingRef fb796e32-d71c-4f30-9e7b-06a5f2b43dc0 (state: None) belongs to BACKSTORE
+ - RECCP - RECCP000000462950 | None pending for packageTrackingRef 84fcc2c6-21b3-40db-88b3-0c18e382ed64 (state: None) belongs to BACKSTORE"
+2026-01-14T08:27:15.195285,LOGFTC-38125,Problema Cambio de Estado,,CO,"Executor BACKSTORE:
+ - RECCP - RECCP000000495728 | None pending for packageTrackingRef 8b91f548-d58b-4cfd-bb6a-fa529cfe0ede (state: None) belongs to BACKSTORE
+ - RECCP - RECCP000000495728 | None pending for packageTrackingRef b3738600-c2fa-45f1-9630-bd2266c522d5 (state: None) belongs to BACKSTORE
+ - RECCP - RECCP000000495728 | None pending for packageTrackingRef b3738600-c2fa-45f1-9630-bd2266c522d5 (state: None) belongs to BACKSTORE
+ - RECCP - RECCP000000495728 | None pending for packageTrackingRef b3738600-c2fa-45f1-9630-bd2266c522d5 (state: None) belongs to BACKSTORE
+ - RECCP - RECCP000000495728 | None pending for packageTrackingRef e2897cbd-6580-4a8b-ab57-7122ba0056fa (state: None) belongs to BACKSTORE
+ - RECCP - RECCP000000495728 | None pending for packageTrackingRef f59b892a-703b-4994-8e6c-4c46d0e5f65d (state: None) belongs to BACKSTORE"
+2026-01-14T08:27:15.242164,LOGFTC-38125,Problema Cambio de Estado,,CO,"Executor THREE_PL:
+ - LMP - LMP00000004526621 | packageTrackingRef 63faa5ee-8f05-4ae0-9ab0-7a1983e87258 in state ACKNOWLEDGED belongs to THREE_PL"
+2026-01-14T08:27:17.099636,LOGFTC-38125,Problema Cambio de Estado,,CO,"Executor BACKSTORE:
+ - RECCP - RECCP000000527604 | None pending for packageTrackingRef 4458363c-9457-4d4b-b845-b9d9687fcbe0 (state: None) belongs to BACKSTORE
+ - RECCP - RECCP000000527604 | None pending for packageTrackingRef 1b2c3499-fd46-4bcd-b9f9-1ef1c97e438d (state: None) belongs to BACKSTORE
+ - RECCP - RECCP000000527604 | None pending for packageTrackingRef 4458363c-9457-4d4b-b845-b9d9687fcbe0 (state: None) belongs to BACKSTORE
+ - RECCP - RECCP000000527604 | None pending for packageTrackingRef 4458363c-9457-4d4b-b845-b9d9687fcbe0 (state: None) belongs to BACKSTORE"
+2026-01-14T08:27:37.296587,LOGFTC-38114,ASN / DO de Crossdock con Problemas,,CL,"Executor UNKNOWN:
+ - Blocking operation detected (MOVEP_NOT_PRESENT). Manual review required."
+2026-01-14T08:27:41.753359,LOGFTC-38114,ASN / DO de Crossdock con Problemas,,CL,"Executor UNKNOWN:
+ - Blocking operation detected (MOVEP_NOT_PRESENT). Manual review required."
+2026-01-14T08:28:38.319818,LOGFTC-36569,Problema Cambio de Estado,,PE,"Executor THREE_PL:
+ - LMP - LMP00000003872599 | packageTrackingRef b21be520-2c7f-4092-bf4a-a06a874d0a92 in state ACKNOWLEDGED belongs to THREE_PL"
+2026-01-14T08:28:38.400841,LOGFTC-36569,Problema Cambio de Estado,,PE,"Executor THREE_PL:
+ - LMP - LMP00000003932586 | packageTrackingRef d71b95a7-3149-460c-9b92-2cbb4cf19e81 in state ACKNOWLEDGED belongs to THREE_PL"
+2026-01-14T08:28:48.666097,LOGFTC-36569,Problema Cambio de Estado,,PE,"Executor THREE_PL:
+ - LMP - LMP00000003872599 | packageTrackingRef b21be520-2c7f-4092-bf4a-a06a874d0a92 in state ACKNOWLEDGED belongs to THREE_PL"
+2026-01-14T08:29:06.122192,LOGFTC-36182,Problema Cambio de Estado,,PE,"Executor THREE_PL:
+ - LMP - LMP00000003937253 | packageTrackingRef 70568bf1-10c2-4b3f-ae72-d08025b34d8e in state ACKNOWLEDGED belongs to THREE_PL"

@@ -1,0 +1,53 @@
+timestamp,ticket,tier2,intent_reason,description,detail
+2026-01-14T08:27:50.792666,LOGFTC-37813,,"User is reporting an issue with order status synchronization, not explicitly asking for a state change","Error en sincronización de estado, ordenes no son canceladas en 360 en proceso habitual",
+2026-01-14T08:27:50.794545,LOGFTC-37813,,"User is reporting an issue with order status synchronization, not explicitly asking for a state change","Error en sincronización de estado, ordenes no son canceladas en 360 en proceso habitual",
+2026-01-14T08:27:53.888026,LOGFTC-37785,,"User is reporting an issue with event FO_ITEMS_ANNULLED, requesting review and investigation","Buen día team, favor su apoyo revisando las siguientes ordenes: 3220184630, 3220184250, 3220184807 las cuales no logramos ver en el header el atributo: ""x-site-id"": ""[marketplace.falabella.com|http://marketplace.falabella.com]"" en el evento FO_ITEMS_ANNULLED.
+
+Favor su apoyo revisando la casuística para estos casos particulares",
+2026-01-14T08:27:53.889817,LOGFTC-37785,,"User is reporting an issue with event FO_ITEMS_ANNULLED, requesting review and investigation","Buen día team, favor su apoyo revisando las siguientes ordenes: 3220184630, 3220184250, 3220184807 las cuales no logramos ver en el header el atributo: ""x-site-id"": ""[marketplace.falabella.com|http://marketplace.falabella.com]"" en el evento FO_ITEMS_ANNULLED.
+
+Favor su apoyo revisando la casuística para estos casos particulares",
+2026-01-14T08:28:16.953146,LOGFTC-37680,,"Review / investigation request, not an action","_Equipo, solicitamos su apoyo reenviando los eventos_ {{FULFILMENT_ORDER_ITEM_QUANTITY_DISPATCHED}} _y posteriormente_ {{ORDER_360_NEW_PROMISE_DATE_EVENT}} _a Masso, para que la nueva promesa de entrega se refleje en el portal. Las órdenes involucradas son_:
+3P
+
+3220194378
+3219424865
+3218324327
+3219893534
+3220332335
+3219572839
+3219999982
+3220277977
+3220021690
+
+","3220194378
+3219424865
+3218324327
+3219893534
+3220332335
+3219572839
+3219999982
+3220277977
+3220021690"
+2026-01-14T08:28:16.959575,LOGFTC-37680,,"Review / investigation request, not an action","_Equipo, solicitamos su apoyo reenviando los eventos_ {{FULFILMENT_ORDER_ITEM_QUANTITY_DISPATCHED}} _y posteriormente_ {{ORDER_360_NEW_PROMISE_DATE_EVENT}} _a Masso, para que la nueva promesa de entrega se refleje en el portal. Las órdenes involucradas son_:
+3P
+
+3220194378
+3219424865
+3218324327
+3219893534
+3220332335
+3219572839
+3219999982
+3220277977
+3220021690
+
+","3220194378
+3219424865
+3218324327
+3219893534
+3220332335
+3219572839
+3219999982
+3220277977
+3220021690"

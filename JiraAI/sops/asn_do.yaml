@@ -16,3 +16,5 @@ steps:
   - analyze_movep_crossdock
   - generate_asn_do_excel
   - finalize_comment
+  - finalize_comment_parent
+  - post_jira_comment

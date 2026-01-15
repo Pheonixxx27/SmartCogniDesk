@@ -17,3 +17,5 @@ steps:
   - analyze_reccp
   - finalize_comment
   - finalize_comment
+  - finalize_comment_parent
+  - post_jira_comment
