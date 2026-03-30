@@ -38,6 +38,10 @@ def execute(ctx):
         return ctx
 
     data = resp.json()
+    
+    # Store raw API response for integrity checks
+    ctx["reccp_data"] = data
+    
     packages = data.get("packages", [])
 
     actionable = []
@@ -83,5 +87,7 @@ def execute(ctx):
                 "packages": actionable,
             },
         }
+        # Store for integrity check
+        ctx["reccp_blocker"] = ctx["blocker"]
 
     return ctx

@@ -14,12 +14,10 @@ if not JIRA_URL or not JIRA_TOKEN:
 
 jira = JIRA(
     server=JIRA_URL,
-    options={
-        "headers": {
-            "Authorization": f"Basic {JIRA_TOKEN}",
-            "Content-Type": "application/json",
-        }
-    },
+    basic_auth=(
+        os.getenv("JIRA_USERNAME"),
+        os.getenv("JIRA_TOKEN")
+    )
 )
 
 JQL = """
@@ -58,20 +56,38 @@ class SimpleTicket:
 # Scanner
 # =====================================================
 
-def scan_queue():
-    print("🔍 Fetching Jira queue...")
+def scan_queue(single_ticket_id=None):
+    if single_ticket_id:
+        print(f"🔍 Fetching single ticket: {single_ticket_id}...")
+        
+        fields = [
+            "description",
+            "customfield_34303",  # Tier 2
+            "customfield_19765",  # Data Detail
+            "attachment",
+        ]
+        
+        try:
+            issue = jira.issue(single_ticket_id, fields=fields)
+            print(f"✅ Fetched ticket: {issue.key}")
+            tickets = [SimpleTicket(issue)]
+        except Exception as e:
+            print(f"❌ Error fetching ticket {single_ticket_id}: {str(e)}")
+            tickets = []
+    else:
+        print("🔍 Fetching Jira queue...")
 
-    fields = [
-        "description",
-        "customfield_34303",  # Tier 2
-        "customfield_19765",  # Data Detail
-        "attachment",
-    ]
+        fields = [
+            "description",
+            "customfield_34303",  # Tier 2
+            "customfield_19765",  # Data Detail
+            "attachment",
+        ]
 
-    issues = jira.search_issues(JQL, fields=fields, maxResults=100)
-    print(f"📋 Found {len(issues)} tickets")
+        issues = jira.search_issues(JQL, fields=fields, maxResults=100)
+        print(f"📋 Found {len(issues)} tickets")
 
-    tickets = [SimpleTicket(issue) for issue in issues]
+        tickets = [SimpleTicket(issue) for issue in issues]
 
     # ✅ IMPORTANT: return BOTH
     return tickets, jira._session

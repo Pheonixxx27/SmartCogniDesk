@@ -8,7 +8,7 @@ def execute(ctx):
 
     url = (
         "https://localhost:8082/"
-        f"fulfilment-order-orchestrator/api/v1/fulfilment-logistic-orchestrator/{fo_id}"
+        f"fulfilment-order-orchestrator-c8/api/v1/fulfilment-logistic-orchestrator/{fo_id}"
     )
 
     headers = {

@@ -41,6 +41,10 @@ def execute(ctx):
         return ctx
 
     data = resp.json()
+    
+    # Store raw API response for integrity checks
+    ctx["lmp_data"] = data
+    
     packages = data.get("packages", [])
     executor = data.get("executorRef")
 
@@ -85,5 +89,7 @@ def execute(ctx):
                 "packages": actionable,
             },
         }
+        # Store for integrity check
+        ctx["lmp_blocker"] = ctx["blocker"]
 
     return ctx

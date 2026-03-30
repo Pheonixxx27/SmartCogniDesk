@@ -3,6 +3,7 @@
 from collections import defaultdict
 from pathlib import Path
 import yaml
+import os
 
 from JiraAI.engine.util import normalize
 from JiraAI.engine.engine import run
@@ -15,6 +16,13 @@ from JiraAI.sops.steps.planner import plan_sop
 # =====================================================
 
 SOP_STATS = defaultdict(int)
+
+# =====================================================
+# ENVIRONMENT VARIABLES
+# =====================================================
+
+# Single ticket testing: TEST_TICKET_ID=JIRA-123 python -m JiraAI.bot
+TEST_TICKET_ID = os.getenv("TEST_TICKET_ID", None)
 
 # =====================================================
 # PATHS
@@ -117,9 +125,15 @@ def handle_ticket(ticket, jira_session):
 # =====================================================
 
 def main():
-    print("🔍 Fetching Jira queue...")
-
-    tickets, jira_session = scan_queue()  # UPDATED CONTRACT
+    # --------------------------------------------------
+    # Single Ticket Testing Mode (TEST_TICKET_ID env var)
+    # --------------------------------------------------
+    if TEST_TICKET_ID:
+        print(f"🔍 Testing mode: Fetching single ticket {TEST_TICKET_ID}...")
+        tickets, jira_session = scan_queue(single_ticket_id=TEST_TICKET_ID)
+    else:
+        print("🔍 Fetching Jira queue...")
+        tickets, jira_session = scan_queue()  # UPDATED CONTRACT
 
     for ticket in tickets:
         handle_ticket(ticket, jira_session)

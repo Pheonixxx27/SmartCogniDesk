@@ -9,7 +9,8 @@ SOURCE_COLS = {
     "deliveryordernumber",
     "sourceorder",
     "source_order",
-    "IKEA_Orden"
+    "IKEA_Orden",
+    "deliveryorder"
 }
 
 LPN_COLS = {
@@ -38,11 +39,14 @@ def extract_ids_from_excel(content: bytes, ctx):
             df = pd.read_excel(io.BytesIO(content), engine=engine)
             ctx.log(f"📊 Excel parsed using {engine}")
             break
-        except Exception:
+        except Exception as e:
+            ctx.log(f"ℹ️ Engine {engine} failed: {str(e)[:50]}")
             continue
 
     if df is None or df.empty:
         ctx.log("⚠️ Excel unreadable or empty")
+        ctx.log(f"   Content size: {len(content)} bytes")
+        ctx.log(f"   First 50 bytes: {content[:50]}")
         return ids
 
     normalized_cols = {normalize_col(c): c for c in df.columns}

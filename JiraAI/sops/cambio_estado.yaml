@@ -15,7 +15,7 @@ steps:
   - analyze_movep_estado
   - analyze_lmp
   - analyze_reccp
-  - finalize_comment
+  - check_integrity
   - finalize_comment
   - finalize_comment_parent
   - post_jira_comment

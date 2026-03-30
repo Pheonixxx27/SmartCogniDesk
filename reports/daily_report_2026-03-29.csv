@@ -1,0 +1,23 @@
+timestamp,ticket,sop,step,intent,reason
+2026-03-29T13:15:30.831863,LOGFTC-42101,Problema Cambio de Estado,find_ids,,
+2026-03-29T15:31:32.816254,LOGFTC-42101,Problema Cambio de Estado,find_ids,,
+2026-03-29T15:32:09.609224,LOGFTC-42101,Problema Cambio de Estado,find_ids,,
+2026-03-29T15:32:43.343876,LOGFTC-42101,Problema Cambio de Estado,get_foorch,STATE_CHANGE,User is requesting assistance with status review
+2026-03-29T15:32:43.343362,LOGFTC-42101,Problema Cambio de Estado,get_foorch,STATE_CHANGE,User is requesting assistance with status review
+2026-03-29T15:32:43.344642,LOGFTC-42101,Problema Cambio de Estado,get_foorch,STATE_CHANGE,User is requesting assistance with status review
+2026-03-29T15:32:43.357436,LOGFTC-42101,Problema Cambio de Estado,get_foorch,STATE_CHANGE,User is requesting assistance with status review
+2026-03-29T15:32:43.358075,LOGFTC-42101,Problema Cambio de Estado,get_foorch,STATE_CHANGE,User is requesting assistance with status review
+2026-03-29T15:32:43.356795,LOGFTC-42101,Problema Cambio de Estado,get_foorch,STATE_CHANGE,User is requesting assistance with status review
+2026-03-29T15:32:43.361570,LOGFTC-42101,Problema Cambio de Estado,get_foorch,STATE_CHANGE,User is requesting assistance with status review
+2026-03-29T15:32:43.367841,LOGFTC-42101,Problema Cambio de Estado,get_foorch,STATE_CHANGE,User is requesting assistance with status review
+2026-03-29T15:32:43.368601,LOGFTC-42101,Problema Cambio de Estado,get_foorch,STATE_CHANGE,User is requesting assistance with status review
+2026-03-29T15:32:43.372926,LOGFTC-42101,Problema Cambio de Estado,get_foorch,STATE_CHANGE,User is requesting assistance with status review
+2026-03-29T15:32:43.394362,LOGFTC-42101,Problema Cambio de Estado,get_foorch,STATE_CHANGE,User is requesting assistance with status review
+2026-03-29T15:32:43.394443,LOGFTC-42101,Problema Cambio de Estado,get_foorch,STATE_CHANGE,User is requesting assistance with status review
+2026-03-29T15:32:43.394530,LOGFTC-42101,Problema Cambio de Estado,get_foorch,STATE_CHANGE,User is requesting assistance with status review
+2026-03-29T15:32:43.395367,LOGFTC-42101,Problema Cambio de Estado,get_foorch,STATE_CHANGE,User is requesting assistance with status review
+2026-03-29T15:32:43.394632,LOGFTC-42101,Problema Cambio de Estado,get_foorch,STATE_CHANGE,User is requesting assistance with status review
+2026-03-29T15:32:43.409934,LOGFTC-42101,Problema Cambio de Estado,get_foorch,STATE_CHANGE,User is requesting assistance with status review
+2026-03-29T15:32:43.410328,LOGFTC-42101,Problema Cambio de Estado,get_foorch,STATE_CHANGE,User is requesting assistance with status review
+2026-03-29T15:32:43.410110,LOGFTC-42101,Problema Cambio de Estado,get_foorch,STATE_CHANGE,User is requesting assistance with status review
+2026-03-29T15:32:43.424667,LOGFTC-42101,Problema Cambio de Estado,get_foorch,STATE_CHANGE,User is requesting assistance with status review
