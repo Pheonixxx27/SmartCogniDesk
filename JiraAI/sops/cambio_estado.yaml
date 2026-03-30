@@ -19,3 +19,4 @@ steps:
   - finalize_comment
   - finalize_comment_parent
   - post_jira_comment
+  - assign_ticket
